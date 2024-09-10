@@ -13,12 +13,17 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(name = "Categories")
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "category_id")
     private Long id;
 
+    @Column(name = "category_name")
     private String name;
+
+    @Column(name = "category_description")
     private String description;
 
     @OneToMany(mappedBy = "category")

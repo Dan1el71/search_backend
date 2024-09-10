@@ -11,16 +11,22 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Data
+@Table(name = "Products")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "product_id")
     private Long id;
 
+    @Column(name = "product_name")
     private String name;
+    @Column(name= "product_description")
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    @JoinColumn(name = "product_category_id", referencedColumnName = "category_id")
     private Category category;
+
+    @Column(name = "product_price")
     private double price;
 }
